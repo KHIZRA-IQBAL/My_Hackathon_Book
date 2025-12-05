@@ -1,0 +1,49 @@
+graph TB
+    subgraph Sensors["Sensor Layer"]
+        L[LIDAR<br/>Point Clouds]
+        C[Cameras<br/>RGB/Depth]
+        I[IMU<br/>Accel/Gyro]
+        F[Force/Torque<br/>Contact]
+    end
+
+    subgraph Processing["Processing Layer"]
+        LP[Point Cloud<br/>Processing]
+        CV[Computer Vision<br/>Object Detection]
+        OR[Orientation<br/>Tracking]
+        CT[Contact<br/>Detection]
+    end
+
+    subgraph Fusion["Fusion Layer"]
+        KF[Kalman Filter<br/>State Estimation]
+        SLAM[SLAM<br/>Localization]
+    end
+
+    subgraph Decision["Decision Layer"]
+        MP[Motion Planning]
+        GC[Grasp Control]
+    end
+
+    L --> LP
+    C --> CV
+    I --> OR
+    F --> CT
+
+    LP --> KF
+    CV --> KF
+    OR --> KF
+    CT --> KF
+
+    LP --> SLAM
+    CV --> SLAM
+
+    KF --> MP
+    SLAM --> MP
+    KF --> GC
+    CT --> GC
+
+    style L fill:#ffebcc,stroke:#ff9900
+    style C fill:#ccebff,stroke:#0099ff
+    style I fill:#ffcceb,stroke:#ff0099
+    style F fill:#ccffeb,stroke:#00ff99
+    style KF fill:#ffe6e6,stroke:#ff0000,stroke-width:3px
+    style SLAM fill:#ffe6e6,stroke:#ff0000,stroke-width:3px

@@ -1,0 +1,37 @@
+graph TB
+    subgraph Learning["End-to-End Learning Approach"]
+        T[Tesla Optimus<br/>Neural Networks]
+        FIG[Figure AI<br/>Foundation Models]
+    end
+
+    subgraph ModelBased["Model-Based Control"]
+        BD[Boston Dynamics Atlas<br/>Whole-Body Control]
+        AG[Agility Robotics Digit<br/>Bipedal Locomotion]
+    end
+
+    subgraph Hybrid["Hybrid: Teleoperation + Learning"]
+        SA[Sanctuary AI Phoenix<br/>Teleoperation to Autonomy]
+    end
+
+    subgraph Applications["Target Applications"]
+        W[Warehouse Automation]
+        M[Manufacturing]
+        HC[Healthcare & Assistance]
+        GP[General Purpose Home]
+    end
+
+    T -.-> GP
+    FIG -.-> GP
+    BD -.-> M
+    AG -.-> W
+    SA -.-> HC
+
+    style T fill:#ffe6cc,stroke:#ff9900,stroke-width:2px
+    style FIG fill:#ffe6cc,stroke:#ff9900,stroke-width:2px
+    style BD fill:#cce6ff,stroke:#0099ff,stroke-width:2px
+    style AG fill:#cce6ff,stroke:#0099ff,stroke-width:2px
+    style SA fill:#e6ccff,stroke:#9900ff,stroke-width:2px
+    style W fill:#e6ffe6,stroke:#00cc00
+    style M fill:#e6ffe6,stroke:#00cc00
+    style HC fill:#e6ffe6,stroke:#00cc00
+    style GP fill:#e6ffe6,stroke:#00cc00

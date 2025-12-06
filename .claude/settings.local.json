@@ -37,7 +37,17 @@
       "Bash(pip install:*)",
       "Bash(export PYTHONIOENCODING=utf-8)",
       "Bash(npm start)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npm install:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(cmd //c \"taskkill /PID 9804 /F\")",
+      "Bash(cmd //c \"taskkill /PID 13712 /F\")",
+      "Bash(npm run deploy:*)",
+      "Bash(set USE_SSH=true)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

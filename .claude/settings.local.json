@@ -47,7 +47,8 @@
       "Bash(npm run deploy:*)",
       "Bash(set USE_SSH=true)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(npx gh-pages:*)"
     ],
     "deny": [],
     "ask": []

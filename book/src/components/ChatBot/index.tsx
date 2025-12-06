@@ -149,13 +149,19 @@ export default function ChatBot(): JSX.Element {
     return () => document.removeEventListener('mouseup', handleSelection);
   }, []);
 
+  const handleButtonClick = () => {
+    console.log('ChatBot button clicked! Current state:', isOpen);
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       {/* Floating chat button */}
       <button
         className={styles.chatButton}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleButtonClick}
         aria-label="Toggle chatbot"
+        type="button"
       >
         {isOpen ? '✕' : '💬'}
       </button>

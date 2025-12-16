@@ -16,7 +16,7 @@ interface Source {
   similarity: number;
 }
 
-const CHATBOT_API_URL = process.env.REACT_APP_CHATBOT_API_URL || 'http://localhost:8000';
+const CHATBOT_API_URL = 'http://localhost:8000';
 
 export default function ChatBot(): JSX.Element {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -33,6 +33,7 @@ export default function ChatBot(): JSX.Element {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -126,31 +127,8 @@ export default function ChatBot(): JSX.Element {
     setWeekFilter('');
   };
 
-  // Handle selected text query (bonus feature)
-  useEffect(() => {
-    const handleSelection = () => {
-      const selection = window.getSelection();
-      const selectedText = selection?.toString().trim();
-
-      if (selectedText && selectedText.length > 10 && selectedText.length < 500) {
-        const askButton = document.getElementById('ask-about-selection');
-        if (askButton) {
-          askButton.style.display = 'block';
-          askButton.onclick = () => {
-            setInputValue(`Explain: "${selectedText}"`);
-            setIsOpen(true);
-            askButton.style.display = 'none';
-          };
-        }
-      }
-    };
-
-    document.addEventListener('mouseup', handleSelection);
-    return () => document.removeEventListener('mouseup', handleSelection);
-  }, []);
-
-  const handleButtonClick = () => {
-    console.log('ChatBot button clicked! Current state:', isOpen);
+  const toggleChat = () => {
+    console.log('ChatBot toggling from', isOpen, 'to', !isOpen);
     setIsOpen(!isOpen);
   };
 
@@ -159,9 +137,8 @@ export default function ChatBot(): JSX.Element {
       {/* Floating chat button */}
       <button
         className={styles.chatButton}
-        onClick={handleButtonClick}
+        onClick={toggleChat}
         aria-label="Toggle chatbot"
-        type="button"
       >
         {isOpen ? '✕' : '💬'}
       </button>
@@ -292,11 +269,6 @@ export default function ChatBot(): JSX.Element {
           </form>
         </div>
       )}
-
-      {/* Hidden button for selected text queries */}
-      <button id="ask-about-selection" style={{ display: 'none' }} className={styles.selectionButton}>
-        Ask about this
-      </button>
     </>
   );
 }
